@@ -1,0 +1,77 @@
+﻿@model Book
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+@*<form method="post">
+    <p>
+        <label asp-for="BookName">Tên:</label>
+        <input asp-for="BookName" />
+    </p>
+    <p>
+        <label asp-for="BookDesc">Mô tả:</label>
+        <input asp-for="BookDesc" />
+    </p>
+    <p>
+        <label asp-for="BookQuantity">Số lượng:</label>
+        <input asp-for="BookQuantity" />
+    </p>
+    <p>
+        <label asp-for="BookPrice">Giá:</label>
+        <input asp-for="BookPrice" />
+    </p>
+    <p>
+        <label asp-for="BookImage">Ảnh:</label>
+        <input asp-for="BookImage" />
+    </p>
+    <p><button type="submit">Submit</button></p>
+</form>*@
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BookID" class="control-label"></label>
+                <input asp-for="BookID" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="BookName" class="control-label"></label>
+                <input asp-for="BookName" class="form-control" />
+                <span asp-validation-for="BookName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookDesc" class="control-label"></label>
+                <textarea asp-for="BookDesc" class="text-box multi-line" class="form-control" cols="120" rows="20"></textarea>
+                <span asp-validation-for="BookDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookQuantity" class="control-label"></label>
+                <input asp-for="BookQuantity" class="form-control" />
+                <span asp-validation-for="BookQuantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookPrice" class="control-label"></label>
+                <input asp-for="BookPrice" class="form-control" />
+                <span asp-validation-for="BookPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookImage" class="control-label"></label>
+                <input asp-for="BookImage" class="form-control" />
+                <span asp-validation-for="BookImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Thêm mới" class="btn btn-primary" /> |
+                <a asp-action="Index" class="btn btn-primary">Quay lại</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

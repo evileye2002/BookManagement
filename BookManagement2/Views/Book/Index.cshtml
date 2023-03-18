@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Book>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Book</h1>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Thêm mới</a>
+</p>
+
+<form a asp-action ="Search" method="post" align="right">
+    <p>
+        <input type="text" name="s" placeholder="Giá sách (VNĐ)" />
+        <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+    </p>
+</form>
+
+<body>
+    <div class="card-group">
+        @foreach (Book item in Model)
+        {
+            <div class="card">
+                <img class="card-header" src="/Images/@item.BookImage" height="400" width="300">
+                <div class="card-body">
+                    <p class="card-title">@item.BookName</p>
+                    <p class="card-text">@item.BookPrice VNĐ</p>
+                </div>
+                <div class="card-footer">
+                    <a asp-action="Edit" asp-route-id=@item.BookID class="btn btn-primary">Sửa</a>
+                    <form a asp-route-id=@item.BookID asp-action="Delete" method="post">
+                        <button type="submit" class="btn btn-danger">Xóa</button>
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+
+
+@*<table style="width:50%">
+    <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Mô tả</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Ảnh</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Book e in Model)
+        {
+            <tr>
+                <td>@e.BookName</td>
+                <td>@e.BookDesc</td>
+                <td>@e.BookPrice</td>
+                <td>@e.BookQuantity</td>
+                <td>@e.BookImage</td>
+            </tr>
+        }
+    </tbody>
+</table>*@
