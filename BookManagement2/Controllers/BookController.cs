@@ -29,13 +29,8 @@ namespace BookManagement2.Controllers
         [HttpPost]
         public IActionResult Create(Book book)
         {
-            if (ModelState.IsValid)
-            {
-                Repository.Create(book);
-                return View("Success");
-            }
-            else
-                return View();
+            Repository.Create(book);
+            return View("Success");
         }
         [HttpPost]
         public IActionResult Delete(int id)
