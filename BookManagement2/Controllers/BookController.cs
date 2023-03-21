@@ -48,19 +48,13 @@ namespace BookManagement2.Controllers
         [HttpPost]
         public IActionResult Edit(Book book, int id)
         {
-            if (ModelState.IsValid)
-            {
+            Repository.AllBook.Where(e => e.BookID == id).FirstOrDefault()!.BookName = book.BookName;
+            Repository.AllBook.Where(e => e.BookID == id).FirstOrDefault()!.BookDesc = book.BookDesc;
+            Repository.AllBook.Where(e => e.BookID == id).FirstOrDefault()!.BookPrice = book.BookPrice;
+            Repository.AllBook.Where(e => e.BookID == id).FirstOrDefault()!.BookQuantity = book.BookQuantity;
+            Repository.AllBook.Where(e => e.BookID == id).FirstOrDefault()!.BookImage = book.BookImage;
 
-                Repository.AllBook.Where(e => e.BookID == id).FirstOrDefault()!.BookName = book.BookName;
-                Repository.AllBook.Where(e => e.BookID == id).FirstOrDefault()!.BookDesc = book.BookDesc;
-                Repository.AllBook.Where(e => e.BookID == id).FirstOrDefault()!.BookPrice = book.BookPrice;
-                Repository.AllBook.Where(e => e.BookID == id).FirstOrDefault()!.BookQuantity = book.BookQuantity;
-                Repository.AllBook.Where(e => e.BookID == id).FirstOrDefault()!.BookImage = book.BookImage;
-
-                return RedirectToAction("Index");
-            }
-            else
-                return View();
+            return RedirectToAction("Index");
         }
     }
 }
